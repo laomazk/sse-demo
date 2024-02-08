@@ -26,3 +26,17 @@ SSE与WebSocket有相似功能，都是用来建立浏览器与服务器之间�
 - SSE 默认支持断线重连，WebSocket 则需要额外部署。
 
 - SSE 支持自定义发送的数据类型。
+
+
+SseEmitter
+
+Spring mvc 4.2 开始提供。服务器向客户端单向发送
+
+- 创建AtomicInteger用于记录连接数
+- 创建ConcurrentHashMap用于存放连接信息
+- 建立连接：创建并返回一个带有超时时间的SseEmitter给前端。超时间设为0表示永不过期
+- 设置连接结束的回调方法completionCallBack
+- 设置连接超时的回调方法timeoutCallBack
+- 设置连接异常的回调方法errorCallBack
+- 创建推送信息的方法SseEmitter.send()
+- 创建移除连接的方法
